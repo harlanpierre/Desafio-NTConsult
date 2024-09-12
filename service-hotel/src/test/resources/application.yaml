@@ -1,0 +1,20 @@
+spring:
+   application:
+     name: service-hotel
+   datasource:
+     username: ntuser
+     password: ntpassword
+     url: jdbc:postgresql://localhost:5432/ntdatabase
+   devtools:
+     restart:
+       enabled: true
+   flyway:
+     enabled: false
+   rabbitmq:
+     host: localhost
+     port: 5672
+     username: ntusermq
+     password: ntpasswordmq
+
+server:
+  port: 8080

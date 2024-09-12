@@ -1,0 +1,23 @@
+spring:
+   application:
+     name: service-hotel
+   datasource:
+     username: ${SPRING_DATASOURCE_USERNAME:ntuser}
+     password: ${SPRING_DATASOURCE_PASSWORD:ntpassword}
+     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ntdatabase}
+   devtools:
+     restart:
+       enabled: true
+   flyway:
+     enabled: true
+     user: ntuser
+     password: ntpassword
+     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ntdatabase}
+   rabbitmq:
+     host: ${SPRING_RABBITMQ_HOST:localhost}
+     port: 5672
+     username: ntusermq
+     password: ntpasswordmq
+
+server:
+  port: 8080

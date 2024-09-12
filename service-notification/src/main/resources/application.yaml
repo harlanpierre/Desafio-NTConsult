@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service-notification
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: 5672
+    username: ntusermq
+    password: ntpasswordmq
+
+server:
+  port: 8081

@@ -1,0 +1,11 @@
+FROM eclipse-temurin:21-jre-alpine
+
+WORKDIR /app
+
+EXPOSE 8080
+
+RUN apk add -U --no-cache tomcat-native
+
+COPY ./target/*.jar app.jar
+
+CMD ["java", "-jar", "app.jar"]

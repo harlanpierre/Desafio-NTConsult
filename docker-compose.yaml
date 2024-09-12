@@ -1,0 +1,56 @@
+services:
+  app:
+    build: ./service-hotel
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/ntdatabase
+      - SPRING_DATASOURCE_USERNAME=ntuser
+      - SPRING_DATASOURCE_PASSWORD=ntpassword
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - postgres-db
+      - rabbitmq
+
+  second-app:
+    build: ./service-notification
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
+
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ntuser
+      POSTGRES_PASSWORD: ntpassword
+      POSTGRES_DB: ntdatabase
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ntusermq
+      RABBITMQ_DEFAULT_PASS: ntpasswordmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: always
+
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:lts-community
+    ports:
+      - 9000:9000
+    restart: always
+
+networks:
+  default:
+    name: app-network
