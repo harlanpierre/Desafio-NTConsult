@@ -68,8 +68,8 @@ curl --request POST \
 
 O `service-hotel` fornece uma interface web OpenAPI e um arquivo `json` para serem usados também. Basta acessar:
 
-* Web Interface: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui.html)
-* YML: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+* Interface Web: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui.html)
+* JSON: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
 
 ## Credenciais
 
